@@ -1,0 +1,24 @@
+*{margin:0;padding:0;}
+body{font-size:1.2rem;padding:20px;}
+button{display:block;width:100%;padding:15px;font-size:1em;margin:20px 0;background:green;border-radius:10px;color:#fff;}
+
+
+.g-contianer{position: fixed;left: 0;top: 0;width:100%;height:100%;background-color:rgba(0,0,0,0.6);
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align:center;
+    z-index: 999;
+}                                  
+.g-contianer .dialog-window{padding:1em;border-radius:10px;background-color:rgba(255,255,255,0.8);
+  -webkit-transition: all .3s ease;
+   }
+.dialog-header{width:32px;height:32px;margin:0 auto;background:url(../img/tuy.png) no-repeat 0 0;background-size:32px}
+.dialog-header.ok{background-position: 0 0;}
+.dialog-header.not{background-position: 0 bottom;}
+.dialog-header.sx{width:50px;height:50px;margin:0 auto;background:url(../img/sx.gif) no-repeat 0 0;background-size:50px}
+.dialog-content{padding:1em 0.5em 0;line-height:180%;font-size:0.8em;text-align: center;color:#333}
+.dialog-footer{padding:1em 1em 0;display:-webkit-flex;-webkit-justify-content: center;-webkit-align-content: center; }
+.dialog-footer button{-webkit-appearance:normal;background-color: rgba(255,255,255,0.8);padding:0.8em 1.8em;margin:0.3em;color:#dedede;border:none;border-radius:0.2em;text-shadow:#666 1px 1px 0;}
+.dialog-footer button.green{background-color: #008000;}
+.dialog-footer button.red{background-color: #FF0000;}
+

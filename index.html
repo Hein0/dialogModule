@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="manifest" content="version.json|manifest.json" />
+		<meta content="email=no" name="format-detection" />
+		<meta content="telephone=no" name="format-detection" />
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<title>移动端弹出框组件dialog</title>
+		
+		<link type="text/css" rel="stylesheet" href="css/dialog.css" />
+	</head>
+	<body>
+		
+		<!--<div class="g-contianer">
+			<div class="dialog-window">
+				<div class="dialog-header sx"></div>
+				<div class="dialog-content">你是否要删除</div>
+				<div class="dialog-footer">
+					<button class="green">确定</button>
+					<button class="red">取消</button>
+				</div>
+			</div>
+		</div>-->
+		
+		<button id="but1">没有传递任何参数出现加载</button>
+		<button id="but2">添加了正确图标和提示语</button>
+		<button id="but3">只设置了提示语</button>
+		<button id="but4">添加了一个确认按钮</button>
+		<button id="but5">添加了一个确认按钮和一个取消按钮</button>
+		<button id="but6">点击取消按钮不关闭</button>
+		<button id="but7">带动画的弹出框</button>
+		<button id="but8">连续弹窗的时候一个弹窗层级比一个高</button>
+		<button id="but9">延迟弹框消失后回调方法</button>
+		<button id="but10">点击遮罩层也关闭弹出框</button>
+		
+		<script src="js/zepto.js"></script>
+		<script src="js/dialog.js"></script>
+		<script>
+		
+		$("#but1").tap(function(){
+		   $.dialog()
+		  });
+		
+		$("#but2").tap(function(){
+		    $.dialog({
+		    	type:"yes",
+		    	message:"添加了正确图标和提示语"
+		    })
+		  });
+		  
+		$("#but3").tap(function(){
+		   $.dialog({
+		    	message:"只有提示语"
+		    })
+		  });  
+				
+		$("#but4").tap(function(){
+		   $.dialog({
+		    	type:"yes",
+		    	message:"添加了一个确认按钮",
+		    	buttons:[{
+		    		type:"red",
+		    		text:"确认"
+		    	}]
+		    })
+		  });
+		
+		$("#but5").tap(function(){
+		    $.dialog({
+		    	type:"yes",
+		    	message:"添加了一个确认按钮和一个取消按钮",
+		    	buttons:[
+		    	{
+		    		type:"red",
+		    		text:"确认",
+		    		callback:function(){
+		    			alert("确认按钮")
+		    		}
+		    	},
+		    	{
+		    		type:"green",
+		    		text:"取消",
+		    		callback:function(){
+		    			alert("取消按钮")
+		    		}
+		    	},
+		    	]
+		    })
+		  });
+		  
+		$("#but6").tap(function(){
+		    $.dialog({
+		    	type:"not",
+		    	message:"点击取消按钮不关闭提示框",
+		    	buttons:[
+		    	{
+		    		type:"red",
+		    		text:"确认",
+		    		callback:function(){
+		    			alert("确认按钮")
+		    		}
+		    	},
+		    	{
+		    		type:"green",
+		    		text:"取消",
+		    		callback:function(){
+		    			alert("取消按钮")
+		    			return false
+		    		}
+		    	},
+		    	]
+		    })
+		  });
+		  $("#but7").tap(function(){
+		    $.dialog({
+		    	type:"not",
+		    	message:"点击取消按钮不关闭提示框",
+		    	effect:true,
+		    	buttons:[
+		    	{
+		    		type:"red",
+		    		text:"确认",
+		    		callback:function(){
+		    			alert("确认按钮")
+		    		}
+		    	},
+		    	{
+		    		type:"green",
+		    		text:"取消",
+		    		callback:function(){
+		    			alert("取消按钮")
+		    			return false
+		    		}
+		    	},
+		    	]
+		    })
+		  });
+		  
+		  $("#but8").tap(function(){
+		    $.dialog({
+		    	type:"not",
+		    	message:"这是第一个弹窗框",
+		    	effect:true,
+		    	buttons:[
+		    	{
+		    		type:"red",
+		    		text:"确认",
+		    		callback:function(){
+		    			$.dialog({
+		    				type:"not",
+		    	             message:"这是第二个弹窗框",
+		    			});
+		    			return false
+		    		}
+		    	},
+		    	{
+		    		type:"green",
+		    		text:"取消",
+		    		callback:function(){
+		    			$.dialog({
+		    				type:"not",
+		    	             message:"这是第三个弹窗框",
+		    			});
+		    			return false
+		    		}
+		    	},
+		    	]
+		    })
+		  });
+         
+          $("#but9").tap(function(){
+		    $.dialog({
+		    	type:"not",
+		    	message:"延迟弹框消失后回调方法",
+		    	delay:2000,
+		    	delayCallback:function(){
+		    		alert("2秒结束执行回调")
+		    	}
+		    	
+		    	
+		    })
+		  });
+		  
+		  $("#but10").tap(function(){
+		    $.dialog({
+		    	type:"not",
+		    	message:"配置点击遮罩层也关闭弹出框",
+		    	buttons:[
+		    	   {
+		    	   	type:"red",
+		    	   	text:"确认",
+		    	   	callback:function(){
+		    	   		
+		    	   	}
+		    	   },
+		    	   {
+		    	   	type:"green",
+		    	   	text:"取消",
+		    	   	callback:function(){
+		    	   		return false
+		    	   	}
+		    	   }
+		    	],
+		    	maskClose:true
+		    	
+		    	
+		    })
+		  });
+			
+		</script>
+		
+	</body>
+</html>
